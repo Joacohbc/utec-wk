@@ -1,7 +1,5 @@
 package semana3.practica4;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -232,7 +230,7 @@ public class GUI extends JFrame {
 		contentPane.add(btnModificar);
 
 		spDocumento = new JSpinner();
-		spDocumento.setModel(new SpinnerNumberModel(new Long(0), new Long(0), null, new Long(1)));
+		spDocumento.setModel(new SpinnerNumberModel(0l, 0l, null, 1l));
 		spDocumento.setBounds(105, 12, 213, 22);
 		contentPane.add(spDocumento);
 

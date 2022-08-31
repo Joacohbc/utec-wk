@@ -1,11 +1,8 @@
 package semana3.practica3;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 

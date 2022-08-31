@@ -1,17 +1,13 @@
 package semana3.practica2;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
 public class Main {
