@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 
 public class ConexionBD {
 
-	private static final String URL_ORACLE = "jdbc:oracle:thin:@10.211.4.15:1521:xe";
-	private static final String USER = "joaco";
-	private static final String PASSWORD = "joaco";
+	private static final String URL_ORACLE = "jdbc:oracle:thin:@192.168.0.250:1521:xe";
+	private static final String USER = "utec";
+	private static final String PASSWORD = "utec";
 
 	private static Connection conn;
 

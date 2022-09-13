@@ -17,13 +17,13 @@ public class DAOCarrera {
 	private static final String FIND_BY_ID_CARRERA = "SELECT id_carrera, nombre, id_universidad FROM carrera WHERE id_carrera = ?";
 	private static final String FIND_BY_NOMBRE = "SELECT id_carrera, nombre, id_universidad FROM carrera WHERE nombre = ?";
 	private static final String DELETE_CARRERA = "DELETE FROM carrera WHERE id_carrera = ?";
-	
+		
 	public static List<Carrera> findAll() throws SQLException {
 		Statement s = ConexionBD.getConnection().createStatement();
 		ResultSet rs = s.executeQuery(SELECT_CARRERA);
 		
 		List<Carrera> carreras = new LinkedList<>();
-		while(rs.next()) {
+		while(rs.next()) {    
 			Carrera c = new Carrera();
 			c.setId(rs.getLong(1));
 			c.setNombre(rs.getString(2));
