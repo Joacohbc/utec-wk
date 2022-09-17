@@ -16,12 +16,14 @@ import prueba.models.Productor;
 
 public class Main {
 	public static void main(String[] args) {
-//		new GUI().setVisible(true);
 
 		try {
+			// Elimiino todos los animales antes que los productores para que no me tire un
+			// error
 			DAOAnimal.eliminarTodo();
 			DAOProductor.eliminarTodo();
 
+			// Creo 4 productores
 			Productor p = new Productor();
 			p.setId(1);
 			p.setNombre("Juan");
@@ -46,6 +48,7 @@ public class Main {
 			p3.setTelefono("096134223");
 			DAOProductor.insert(p3);
 
+			// Listo los Productores
 			System.out.println("> Todos los productores <");
 			List<Productor> productors = DAOProductor.findAll();
 			for (Productor productor : productors) {
@@ -57,6 +60,7 @@ public class Main {
 			// Animales
 			//
 
+			// Creo 3 animales
 			Animal a = new Animal();
 			a.setId(1);
 			a.setDescripcion("Vaca 190kg");
@@ -78,6 +82,7 @@ public class Main {
 			a2.setProductor(DAOProductor.buscarProductor(3));
 			DAOAnimal.insert(a2);
 
+			// Listo los animales
 			System.out.println("> Todos los Animales <");
 			List<Animal> animals = DAOAnimal.findAll();
 			for (Animal animal : animals) {
@@ -85,6 +90,8 @@ public class Main {
 			}
 			System.out.println();
 
+			// Modifico un animal
+			// Primero lo listo, luego modifico y lo muestra otra vez
 			System.out.println("> Modifico el Animal con el ID 2 <");
 			System.out.println(DAOAnimal.buscarAnimal(2));
 			Animal a1New = new Animal();
@@ -95,6 +102,8 @@ public class Main {
 			System.out.println(DAOAnimal.buscarAnimal(2));
 			System.out.println();
 
+			// ELimino un Animal
+			// Primero muestro todos y luego lo elimino y vuelvo a mostrar todos
 			System.out.println("> Elimino el Animal con el ID 3 <");
 			animals = DAOAnimal.findAll();
 			for (Animal animal : animals) {

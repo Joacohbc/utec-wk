@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
-import prueba.ConnectionBD;
+import prueba.DatabaseManager;
 
 public class DAOEjemplo {
 
@@ -18,7 +18,7 @@ public class DAOEjemplo {
 	private static final String DELETE = "DELETE FROM tabla WHERE id_tabla = ?";
 
 	public static List<Ejemplo> findAll() throws SQLException {
-		Statement s = ConnectionBD.getConnection().createStatement();
+		Statement s = DatabaseManager.getConnection().createStatement();
 		ResultSet rs = s.executeQuery(FIND_ALL);
 
 		List<Ejemplo> lista = new LinkedList<>();
@@ -32,7 +32,7 @@ public class DAOEjemplo {
 	}
 
 	public static Ejemplo findById(Long id) throws SQLException {
-		PreparedStatement ps = ConnectionBD.getConnection().prepareStatement(FIND_BY_ID);
+		PreparedStatement ps = DatabaseManager.getConnection().prepareStatement(FIND_BY_ID);
 		ps.setLong(1, id);
 		ResultSet rs = ps.executeQuery();
 
@@ -46,20 +46,20 @@ public class DAOEjemplo {
 	}
 
 	public static boolean insert(Ejemplo c) throws SQLException {
-		PreparedStatement ps = ConnectionBD.getConnection().prepareStatement(INSERT);
+		PreparedStatement ps = DatabaseManager.getConnection().prepareStatement(INSERT);
 		// TODO: Setear campos a insertar
 		return ps.executeUpdate() > 0;
 	}
 
 	public static boolean update(Long id, Ejemplo c) throws SQLException {
-		PreparedStatement ps = ConnectionBD.getConnection().prepareStatement(UPDATE);
+		PreparedStatement ps = DatabaseManager.getConnection().prepareStatement(UPDATE);
 		ps.setLong(1, id);
 		// TODO: Setear campos a modificar
 		return ps.executeUpdate() > 0;
 	}
 
 	public static boolean delete(Long id) throws SQLException {
-		PreparedStatement ps = ConnectionBD.getConnection().prepareStatement(DELETE);
+		PreparedStatement ps = DatabaseManager.getConnection().prepareStatement(DELETE);
 		ps.setLong(1, id);
 		return ps.executeUpdate() > 0;
 	}

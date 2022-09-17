@@ -4,12 +4,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConnectionBD {
+public class DatabaseManager {
 
-	private static final String IP = "192.168.0.250";
+	private static final String IP = "10.211.4.88";
 	private static final String URL_ORACLE = "jdbc:oracle:thin:@" + IP + ":1521:xe";
-	private static final String USER = "utec";
-	private static final String PASSWORD = "utec";
+	private static final String USER = "joaco";
+	private static final String PASSWORD = "joaco";
 
 	private static Connection conn;
 
