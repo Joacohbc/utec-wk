@@ -25,6 +25,7 @@ import javax.swing.SpinnerNumberModel;
 
 public class GUI extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtNombre;
 	private JTextField txtSegNombre;
@@ -250,6 +251,8 @@ public class GUI extends JFrame {
 					
 					// Creo un nuevo modelo (haciendolo no editable)
 					DefaultTableModel model = new DefaultTableModel() {
+						private static final long serialVersionUID = 1L;
+
 						@Override
 						public boolean isCellEditable(int row, int column) {
 							return false; // Hago todas las celdas no editables

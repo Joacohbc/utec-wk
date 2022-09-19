@@ -28,7 +28,9 @@ public class Main {
 			ResultSetMetaData data = rs.getMetaData();
 
 			DefaultTableModel model = new DefaultTableModel() {
-				   @Override
+				   private static final long serialVersionUID = 1L;
+
+				@Override
 				    public boolean isCellEditable(int row, int column) {
 				       return false; // Hago todas las celdas no editables
 				    }

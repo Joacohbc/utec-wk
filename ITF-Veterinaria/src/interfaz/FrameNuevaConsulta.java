@@ -174,8 +174,6 @@ public class FrameNuevaConsulta implements DocumentListener, ActionListener {
 
 		List<Veterinario> veterinarios = ControladorVeterinarios.obtenerTodosVeterinarios();
 
-		String[] nombreColumnas = { "Codigo", "Especialidad", "Nombre", "CI" };
-
 		for (Veterinario v : veterinarios) {
 			combo.addItem(v.getCodigo());
 		}
@@ -191,7 +189,7 @@ public class FrameNuevaConsulta implements DocumentListener, ActionListener {
 		String[] nombreColumnas = { "Nro Patente", "Nombre", "Tipo", "CI Cliente" };
 
 		/*
-		 * El tamaño de la tabla es, 4 columnas (cantidad de datos a mostrar) y
+		 * El tamaï¿½o de la tabla es, 4 columnas (cantidad de datos a mostrar) y
 		 * la cantidad de filas depende de la cantida de mascotas
 		 */
 		Object[][] datos = new Object[mascotas.size()][4];
@@ -213,6 +211,11 @@ public class FrameNuevaConsulta implements DocumentListener, ActionListener {
 		 * del tipos String
 		 */
 		DefaultTableModel model = new DefaultTableModel(datos, nombreColumnas) {
+
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
 
 			@Override
 			public boolean isCellEditable(int row, int column) {
@@ -264,7 +267,7 @@ public class FrameNuevaConsulta implements DocumentListener, ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		/* Debo primero conocer que botón fue clickeado */
+		/* Debo primero conocer que botï¿½n fue clickeado */
 
 		if (e.getSource() == this.buttonCancelar) {
 			this.accionCancelar();
@@ -282,7 +285,7 @@ public class FrameNuevaConsulta implements DocumentListener, ActionListener {
 		String codigoVeterinario = (String) this.comboVeterinarios.getSelectedItem();
 		Date fecha = (Date) this.datePicker.getModel().getValue();
 
-		// Si alguno es vacío, mostramos una ventana de mensaje
+		// Si alguno es vacï¿½o, mostramos una ventana de mensaje
 		if (filaSeleccionadaMascotas < 0) {
 			JOptionPane.showMessageDialog(frame, "Debe seleccionar una mascota.", "Datos incompletos!",
 					JOptionPane.WARNING_MESSAGE);
@@ -300,19 +303,19 @@ public class FrameNuevaConsulta implements DocumentListener, ActionListener {
 		// Obtenemos los datos de la tabla
 		String patenteMascota = (String) this.tablaMascotas.getValueAt(filaSeleccionadaMascotas, 0);
 
-		// Si estamos aquí,..quiere decir que no hay errores. Almacenamos el
+		// Si estamos aquï¿½,..quiere decir que no hay errores. Almacenamos el
 		// veterinario y volvemos al menu
 		boolean almacenado = ControladorConsultas.ingresarNuevaConsulta(codigoVeterinario, patenteMascota, fecha);
 
 		if (almacenado) {
-			JOptionPane.showMessageDialog(frame, "La consulta se ha registrado con éxito.", "Consulta Registrada!",
+			JOptionPane.showMessageDialog(frame, "La consulta se ha registrado con ï¿½xito.", "Consulta Registrada!",
 					JOptionPane.INFORMATION_MESSAGE);
 
 			// cerramos la ventanta
 			this.frame.dispose();
 
 		} else {
-			JOptionPane.showMessageDialog(frame, "Hubo un error al almacenar. Intente nuevamente más tarde",
+			JOptionPane.showMessageDialog(frame, "Hubo un error al almacenar. Intente nuevamente mï¿½s tarde",
 					"Error al registrar!", JOptionPane.ERROR_MESSAGE);
 		}
 

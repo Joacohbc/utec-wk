@@ -27,6 +27,7 @@ import java.awt.event.ActionEvent;
 
 public class GUI extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtNombreUni;
 	private JTextField txtUbicacionUni;
@@ -147,6 +148,8 @@ public class GUI extends JFrame {
 					
 					// Creo un nuevo modelo (haciendolo no editable)
 					DefaultTableModel model = new DefaultTableModel() {
+						private static final long serialVersionUID = 1L;
+
 						@Override
 						public boolean isCellEditable(int row, int column) {
 							return false; // Hago todas las celdas no editables
@@ -281,6 +284,8 @@ public class GUI extends JFrame {
 
 					// Creo un nuevo modelo (haciendolo no editable)
 					DefaultTableModel model = new DefaultTableModel() {
+						private static final long serialVersionUID = 1L;
+
 						@Override
 						public boolean isCellEditable(int row, int column) {
 							return false; // Hago todas las celdas no editables

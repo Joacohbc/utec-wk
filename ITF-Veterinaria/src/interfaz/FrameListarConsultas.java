@@ -1,7 +1,5 @@
 package interfaz;
 
-import java.awt.Dimension;
-import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -13,13 +11,11 @@ import java.util.Date;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -33,9 +29,6 @@ import objetos.Consulta;
 
 public class FrameListarConsultas implements ActionListener {
 	
-	/** Frame */
-	private Frame frame;
-
 	/** Tabla */
 	private JTable tablaConsultas;
 
@@ -118,8 +111,6 @@ public class FrameListarConsultas implements ActionListener {
 		// frame.pack();
 		frame.setVisible(true);
 
-		this.frame = frame;
-
 	}
 
 	private JTable cargarTablaConsultas() {
@@ -129,7 +120,7 @@ public class FrameListarConsultas implements ActionListener {
 		String[] nombreColumnas = { "Fecha", "Nro Patente", "Codigo Veterinario", "CI Veterinario" };
 
 		/*
-		 * El tamaño de la tabla es, 4 columnas (cantidad de datos a mostrar) y
+		 * El tamaï¿½o de la tabla es, 4 columnas (cantidad de datos a mostrar) y
 		 * la cantidad de filas depende de la cantida de consultas
 		 */
 		Object[][] datos = new Object[consultas.size()][4];
@@ -155,6 +146,11 @@ public class FrameListarConsultas implements ActionListener {
 		 */
 		DefaultTableModel model = new DefaultTableModel(datos, nombreColumnas) {
 
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public boolean isCellEditable(int row, int column) {
 				return false;
@@ -178,7 +174,6 @@ public class FrameListarConsultas implements ActionListener {
 	}
 
 	private JDatePickerImpl crearDatePicker() {
-
 		UtilDateModel model = new UtilDateModel();
 		JDatePanelImpl datePanel = new JDatePanelImpl(model);
 		JDatePickerImpl datePicker = new JDatePickerImpl(datePanel);
@@ -197,7 +192,6 @@ public class FrameListarConsultas implements ActionListener {
 	}
 
 	private void accionLimpiarFiltro() {
-
 		this.tablaConsultas.setRowSorter(null);
 		this.datePicker.getModel().setValue(null);
 	}

@@ -15,7 +15,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import controladores.ControladorClientes;
 import controladores.ControladorVeterinarios;
 
 public class FrameNuevoVeterinario implements ActionListener{
@@ -133,18 +132,18 @@ public class FrameNuevoVeterinario implements ActionListener{
 
 	private JComboBox<String> cargarComboEspecialidad() {
 		
-		String[] valores = {"Cirugía", "Consulta", "Alimentación"};
+		String[] valores = {"Cirugï¿½a", "Consulta", "Alimentaciï¿½n"};
 		return new JComboBox<>(valores);
 	}
 
 	/**
 	 * Como implementos Action Listener, quiere decir que soy escuchado de
-	 * eventos. Este método es quien se ejecutan cuando tocan un boton .
+	 * eventos. Este mï¿½todo es quien se ejecutan cuando tocan un boton .
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		/* Debo primero conocer que botón fue clickeado */
+		/* Debo primero conocer que botï¿½n fue clickeado */
 
 		if (e.getSource() == this.buttonCancelar) {
 			this.accionCancelar();
@@ -163,7 +162,7 @@ public class FrameNuevoVeterinario implements ActionListener{
 		String fieldCi = this.textCi.getText();
 		String fieldEspecialidad = (String) this.comboEspecialidad.getSelectedItem();
 
-		// Si alguno es vacío, mostramos una ventana de mensaje
+		// Si alguno es vacï¿½o, mostramos una ventana de mensaje
 		if (fieldNombre.equals("") || fieldCodigo.equals("") || fieldCi.equals("")) {
 			JOptionPane.showMessageDialog(frame, "Debe completar todos los datos solicitados.", "Datos incompletos!",
 					JOptionPane.WARNING_MESSAGE);
@@ -181,12 +180,12 @@ public class FrameNuevoVeterinario implements ActionListener{
 			return;
 		}
 
-		// Si estamos aquí,..quiere decir que no hay errores. Almacenamos el
+		// Si estamos aquï¿½,..quiere decir que no hay errores. Almacenamos el
 		// veterinario y volvemos al menu
 		boolean almacenado = ControladorVeterinarios.ingresarNuevaVeterinario(fieldCodigo, fieldEspecialidad, fieldNombre, fieldCi);
 
 		if (almacenado) {
-			JOptionPane.showMessageDialog(frame, "El veterinario ha sido registrado con éxito.",
+			JOptionPane.showMessageDialog(frame, "El veterinario ha sido registrado con ï¿½xito.",
 					"Veterinario Registrado!", JOptionPane.INFORMATION_MESSAGE);
 			
 			// cerramos la ventanta
@@ -195,7 +194,7 @@ public class FrameNuevoVeterinario implements ActionListener{
 			
 		}
 		else{
-			JOptionPane.showMessageDialog(frame, "Hubo un error al almacenar. Intente nuevamente más tarde",
+			JOptionPane.showMessageDialog(frame, "Hubo un error al almacenar. Intente nuevamente mï¿½s tarde",
 					"Error al registrar!", JOptionPane.ERROR_MESSAGE);
 		}
 

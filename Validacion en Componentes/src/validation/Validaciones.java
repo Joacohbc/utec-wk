@@ -4,8 +4,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.regex.Pattern;
 
-import components.ValidationObject;
-
 public final class Validaciones {
 	
 	public static String Trim(String s) {

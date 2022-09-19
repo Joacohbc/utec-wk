@@ -2,23 +2,22 @@ package components;
 
 public class ValidationObject {
 
-	public static final ValidationObject IS_VALID = new ValidationObject();
+	public static final ValidationObject VALID = new ValidationObject(true, "");
 
 	private boolean valid;
 	private String errorMessage;
+
+	public ValidationObject(boolean valid, String errorMessage) {
+		super();
+		this.valid = valid;
+		this.errorMessage = errorMessage;
+	}
 
 	// Constructor de caso Invalido
 	public ValidationObject(String errorMessage) {
 		super();
 		this.valid = false;
 		this.errorMessage = errorMessage;
-	}
-
-	// Constructor de caso Valido
-	public ValidationObject() {
-		super();
-		this.valid = true;
-		this.errorMessage = "";
 	}
 
 	public boolean isValid() {

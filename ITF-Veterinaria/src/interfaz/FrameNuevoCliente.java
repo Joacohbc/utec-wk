@@ -3,7 +3,6 @@ package interfaz;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,7 +15,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controladores.ControladorClientes;
-import controladores.ControladorConsultas;
 
 public class FrameNuevoCliente implements ActionListener {
 
@@ -120,12 +118,12 @@ public class FrameNuevoCliente implements ActionListener {
 
 	/**
 	 * Como implementos Action Listener, quiere decir que soy escuchado de
-	 * eventos. Este método es quien se ejecutan cuando tocan un boton .
+	 * eventos. Este mï¿½todo es quien se ejecutan cuando tocan un boton .
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		/* Debo primero conocer que botón fue clickeado */
+		/* Debo primero conocer que botï¿½n fue clickeado */
 
 		if (e.getSource() == this.buttonCancelar) {
 			this.accionCancelar();
@@ -143,7 +141,7 @@ public class FrameNuevoCliente implements ActionListener {
 		String fieldApellido = this.textApellido.getText();
 		String fieldCi = this.textCi.getText();
 
-		// Si alguno es vacío, mostramos una ventana de mensaje
+		// Si alguno es vacï¿½o, mostramos una ventana de mensaje
 		if (fieldNombre.equals("") || fieldApellido.equals("") || fieldCi.equals("")) {
 			JOptionPane.showMessageDialog(frame, "Debe completar todos los datos solicitados.", "Datos incompletos!",
 					JOptionPane.WARNING_MESSAGE);
@@ -161,12 +159,12 @@ public class FrameNuevoCliente implements ActionListener {
 			return;
 		}
 
-		// Si estamos aquí,..quiere decir que no hay errores. Almacenamos el
+		// Si estamos aquï¿½,..quiere decir que no hay errores. Almacenamos el
 		// cliente y volvemos al menu
 		boolean almacenado = ControladorClientes.ingresarNuevoCliente(fieldNombre, fieldApellido, fieldCi);
 
 		if (almacenado) {
-			JOptionPane.showMessageDialog(frame, "El cliente ha sido registrado con éxito.",
+			JOptionPane.showMessageDialog(frame, "El cliente ha sido registrado con ï¿½xito.",
 					"Cliente Registrado!", JOptionPane.INFORMATION_MESSAGE);
 			
 			// cerramos la ventanta
@@ -175,7 +173,7 @@ public class FrameNuevoCliente implements ActionListener {
 			
 		}
 		else{
-			JOptionPane.showMessageDialog(frame, "Hubo un error al almacenar. Intente nuevamente más tarde",
+			JOptionPane.showMessageDialog(frame, "Hubo un error al almacenar. Intente nuevamente mï¿½s tarde",
 					"Error al registrar!", JOptionPane.ERROR_MESSAGE);
 		}
 

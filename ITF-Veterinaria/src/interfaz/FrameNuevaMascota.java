@@ -16,7 +16,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import controladores.ControladorClientes;
 import controladores.ControladorMascotas;
 import manejadores.ManejadorClientes;
 import objetos.Cliente;
@@ -172,7 +171,7 @@ public class FrameNuevaMascota implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		/* Debo primero conocer que botón fue clickeado */
+		/* Debo primero conocer que botï¿½n fue clickeado */
 
 		if (e.getSource() == this.buttonCancelar) {
 			this.accionCancelar();
@@ -192,7 +191,7 @@ public class FrameNuevaMascota implements ActionListener {
 		String fieldTipo = (String) this.comboTipo.getSelectedItem();
 		String ciCliente = (String) this.comboClientes.getSelectedItem();
 
-		// Si alguno es vacío, mostramos una ventana de mensaje
+		// Si alguno es vacï¿½o, mostramos una ventana de mensaje
 		if (fieldNombre.equals("") || fieldPatente.equals("") || fieldEdad.equals("")) {
 			JOptionPane.showMessageDialog(frame, "Debe completar todos los datos solicitados.", "Datos incompletos!",
 					JOptionPane.WARNING_MESSAGE);
@@ -206,7 +205,7 @@ public class FrameNuevaMascota implements ActionListener {
 		try{
 			edad = Integer.valueOf(fieldEdad);
 		} catch (Exception e){
-			JOptionPane.showMessageDialog(frame, "La edad debe ser un número entero.", "Datos incorrectos!",
+			JOptionPane.showMessageDialog(frame, "La edad debe ser un nï¿½mero entero.", "Datos incorrectos!",
 					JOptionPane.WARNING_MESSAGE);
 
 			return;
@@ -225,7 +224,7 @@ public class FrameNuevaMascota implements ActionListener {
 		boolean almacenado = ControladorMascotas.ingresarNuevaMascota(fieldPatente, fieldTipo, edad, fieldNombre, ciCliente);
 
 		if (almacenado) {
-			JOptionPane.showMessageDialog(frame, "La mascto ha sido registrada con éxito.",
+			JOptionPane.showMessageDialog(frame, "La mascto ha sido registrada con ï¿½xito.",
 					"Mascota Registrada!", JOptionPane.INFORMATION_MESSAGE);
 			
 			// cerramos la ventanta
@@ -234,7 +233,7 @@ public class FrameNuevaMascota implements ActionListener {
 			
 		}
 		else{
-			JOptionPane.showMessageDialog(frame, "Hubo un error al almacenar. Intente nuevamente más tarde",
+			JOptionPane.showMessageDialog(frame, "Hubo un error al almacenar. Intente nuevamente mï¿½s tarde",
 					"Error al registrar!", JOptionPane.ERROR_MESSAGE);
 		}
 
