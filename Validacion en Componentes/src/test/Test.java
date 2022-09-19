@@ -9,9 +9,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import components.VTextBox;
 import components.ValidationObject;
-import components.vtextbox.VTextBox;
-import components.vtextbox.builders.VTBOnlyText;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -20,8 +19,7 @@ import java.time.LocalDate;
 public class Test extends JFrame {
 
 	private JPanel contentPane;
-	private VTextBox txtNombre;
-	private JButton btnNewButton;
+	private JButton btnValidar;
 	private VTextBox txtEdad;
 	private VTextBox txtNacimiento;
 
@@ -46,33 +44,27 @@ public class Test extends JFrame {
 	 */
 	public Test() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 490, 313);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		txtNombre = VTBOnlyText.get();
-		txtNombre.setBounds(170, 93, 114, 21);
-		contentPane.add(txtNombre);
-		contentPane.add(txtNombre.getErrorLabelWithBounds());
-
-		btnNewButton = new JButton("Validar");
-		btnNewButton.addActionListener(new ActionListener() {
+		btnValidar = new JButton("Validar");
+		btnValidar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				if (txtNombre.isContentValid() && txtEdad.isContentValid() && txtNacimiento.isContentValid()) {
+				if ( txtEdad.isContentValid() && txtNacimiento.isContentValid()) {
 					JOptionPane.showMessageDialog(null, "Datos correcto", "Exito", JOptionPane.INFORMATION_MESSAGE);
 				} else {
 					JOptionPane.showMessageDialog(null, "Datos inccorrecto", "Fallo", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
-		btnNewButton.setBounds(170, 188, 114, 27);
-		contentPane.add(btnNewButton);
+		btnValidar.setBounds(180, 155, 114, 27);
+		contentPane.add(btnValidar);
 
 		txtEdad = new VTextBox(null);
-		txtEdad.setBounds(170, 126, 114, 21);
+		txtEdad.setBounds(180, 122, 114, 21);
 		txtEdad.setValidationFunc(text -> {
 			try {
 				int edad = Integer.parseInt(text);
@@ -86,10 +78,9 @@ public class Test extends JFrame {
 
 		});
 		contentPane.add(txtEdad);
-		contentPane.add(txtEdad.getErrorLabelWithBounds());
 
 		txtNacimiento = new VTextBox(null);
-		txtNacimiento.setBounds(170, 155, 114, 21);
+		txtNacimiento.setBounds(180, 59, 114, 21);
 		txtNacimiento.setValidationFunc(text -> {
 			try {
 				LocalDate.parse(text);
@@ -99,6 +90,12 @@ public class Test extends JFrame {
 			}
 		});
 		contentPane.add(txtNacimiento);
-		contentPane.add(txtNacimiento.getErrorLabelWithBounds());
+
+		VTextBox txtNombre = new VTextBox(null);
+		txtNombre.setBounds(180, 89, 114, 21);
+		txtNombre.setValidationFunc(
+				t -> t.isBlank() ? new ValidationObject("El nombre no debe ser vacio") : ValidationObject.VALID);
+		contentPane.add(txtNombre);
+
 	}
 }

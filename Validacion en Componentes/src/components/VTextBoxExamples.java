@@ -1,14 +1,12 @@
-package components.vtextbox.builders;
+package components;
 
 import javax.swing.ImageIcon;
 
-import components.ValidationObject;
-import components.vtextbox.VTextBox;
 import validation.Validaciones;
 
-public class VTBOnlyText {
+public class VTextBoxExamples {
 
-	public static VTextBox get() {
+	public static VTextBox getOnlyText() {
 		VTextBox vtb = new VTextBox(null);
 
 		vtb.setValidationFunc(text -> {
@@ -24,7 +22,7 @@ public class VTBOnlyText {
 			return ValidationObject.VALID;
 		});
 
-		vtb.setErrorIcon(new ImageIcon(VTBOnlyText.class.getResource("/components/error2.png")));
+		vtb.setErrorIcon(new ImageIcon(VTextBoxExamples.class.getResource("/components/error2.png")));
 		return vtb;
 	}
 }

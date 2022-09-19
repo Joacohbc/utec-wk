@@ -1,10 +1,12 @@
-package components.vtextbox;
+package components;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.event.HierarchyEvent;
+import java.awt.event.HierarchyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.function.Function;
@@ -15,8 +17,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
-
-import components.ValidationObject;
 
 @SuppressWarnings("serial")
 public class VTextBox extends JTextField {
@@ -97,6 +97,21 @@ public class VTextBox extends JTextField {
 				}
 			});
 			this.errorLabel.setVisible(false);
+
+			this.addHierarchyListener(new HierarchyListener() {
+
+				// Cuando cambie el comonente padre (osea que ya haya sido agregado
+				// al panel le digo que agregue el Label al panel)
+				public void hierarchyChanged(HierarchyEvent e) {
+
+					// Si tiene el padre que agregue el label
+					if (e.getChangedParent() != null) {
+
+						errorLabel.setBounds(getX() + getWidth() + 5, getY(), 20, 20);
+						e.getChangedParent().add(errorLabel);
+					}
+				}
+			});
 		}
 	}
 
@@ -135,14 +150,6 @@ public class VTextBox extends JTextField {
 
 	public void setExecuteValidation(Runnable executeValidation) {
 		this.executeValidation = executeValidation;
-	}
-
-	// Antes de obtenerlo (para agregarlo al componente panel que contiene
-	// el JTextField) que sette su ubicacion a 5 pixeles a la derecha de
-	// JTextField
-	public JLabel getErrorLabelWithBounds() {
-		this.errorLabel.setBounds(getX() + getWidth() + 5, getY(), 20, 20);
-		return errorLabel;
 	}
 
 	public JLabel getErrorLabel() {
