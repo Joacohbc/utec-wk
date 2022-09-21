@@ -52,6 +52,7 @@ public class ControladorClientes {
 		
 		return ManejadorClientes.obtenerTodosClientes();
 	}
+
 	public static  boolean validarCi (String ci) {	
 		if (ci.length()<11) {
 		return false;

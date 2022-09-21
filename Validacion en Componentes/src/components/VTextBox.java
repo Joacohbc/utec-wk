@@ -25,6 +25,9 @@ public class VTextBox extends JTextField {
 
 	// Funcion que valida el texto
 	private Function<String, ValidationObject> validationFunc;
+	
+	// Funcion que retorna el texto luego de aplicar un formato determinado
+	private Function<String, String> formmatedFunc;
 
 	// Funcion que determina como se ejecetura la validacion
 	private Runnable executeValidation;
@@ -73,16 +76,13 @@ public class VTextBox extends JTextField {
 		this.getDocument().addDocumentListener(listener);
 	}
 
-	// Inicializa el VTextBox sin ningun valor predeterminado
-	public VTextBox() {
-		super();
-	}
-
-	public VTextBox(Function<String, ValidationObject> validationFunc, boolean showIcon, Icon icon) {
+	public VTextBox(Function<String, ValidationObject> validationFunc, Function<String, String> formmatedFunc,
+			boolean showIcon, Icon icon) {
 		super();
 		init();
 
 		this.validationFunc = validationFunc;
+		this.formmatedFunc = formmatedFunc;
 
 		// Si el se quiere mostrar el JLabel
 		if (showIcon) {
@@ -106,7 +106,6 @@ public class VTextBox extends JTextField {
 
 					// Si tiene el padre que agregue el label
 					if (e.getChangedParent() != null) {
-
 						errorLabel.setBounds(getX() + getWidth() + 5, getY(), 20, 20);
 						e.getChangedParent().add(errorLabel);
 					}
@@ -115,9 +114,19 @@ public class VTextBox extends JTextField {
 		}
 	}
 
-	public VTextBox(Function<String, ValidationObject> validationFunc) {
-		this(validationFunc, true, new ImageIcon(VTextBox.class.getResource("/components/error.png")));
-		this.validationFunc = validationFunc;
+	public VTextBox(Function<String, ValidationObject> validationFunc, Function<String, String> formmatedFunc) {
+		this(validationFunc, formmatedFunc, true, new ImageIcon(VTextBox.class.getResource("/components/error.png")));
+	}
+
+	// Inicializa el VTextBox sin ningun valor predeterminado en las funciones de
+	// Validacion y formato
+	public VTextBox() {
+		this(t -> ValidationObject.VALID, t -> t);
+	}
+
+	public VTextBox(VTextBox template) {
+		this(template.getValidationFunc(), template.getFormmatedFunc(), template.errorLabel != null,
+				template.getErrorIcon());
 	}
 
 	//
@@ -128,6 +137,11 @@ public class VTextBox extends JTextField {
 	// "errorMessage"
 	public void setVaidationsFileds() {
 		validation = validationFunc.apply(getText());
+	}
+
+	public String getFormmatedText() {
+		// Si no hay una formmatedFunc asignada que retorne le texto predeterminado
+		return formmatedFunc != null ? formmatedFunc.apply(getText()) : getText();
 	}
 
 	//
@@ -168,6 +182,14 @@ public class VTextBox extends JTextField {
 	// mensaje de error correspondiente
 	public void setValidationFunc(Function<String, ValidationObject> validation) {
 		this.validationFunc = validation;
+	}
+
+	public Function<String, String> getFormmatedFunc() {
+		return formmatedFunc;
+	}
+
+	public void setFormmatedFunc(Function<String, String> formmatedFunc) {
+		this.formmatedFunc = formmatedFunc;
 	}
 
 	public String getErrorMessage() {
