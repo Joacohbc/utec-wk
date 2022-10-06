@@ -25,6 +25,5 @@ hs_err_pid*
 .metadata
 */bin/
 
-# Otros tiposd e archivos
-*.png
+# Otros tipos de archivos
 *.txt
