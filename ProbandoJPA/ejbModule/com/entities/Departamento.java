@@ -21,7 +21,7 @@ public class Departamento implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(length = 45)
+	@Column(length = 45, unique = true)
 	private String nombre;
 	
 	//
@@ -44,4 +44,8 @@ public class Departamento implements Serializable {
 		this.nombre = nombre;
 	}
 
+	@Override
+	public String toString() {
+		return "Departamento [id=" + id + ", nombre=" + nombre + "]";
+	}
 }
