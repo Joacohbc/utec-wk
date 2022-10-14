@@ -17,7 +17,7 @@ public class ConEstado implements ConEstadoRemote {
 	 * Default constructor.
 	 */
 	public ConEstado() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	private String palabra;

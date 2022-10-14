@@ -69,16 +69,16 @@ public class GUI extends JFrame {
 		JPanel pCarreras = new JPanel();
 		tabbedPane.addTab("Carreras", null, pCarreras, null);
 		pCarreras.setLayout(null);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("Nombre:");
 		lblNewLabel_1.setBounds(12, 14, 60, 17);
 		pCarreras.add(lblNewLabel_1);
-		
+
 		txtNombreCarr = new JTextField();
 		txtNombreCarr.setColumns(10);
 		txtNombreCarr.setBounds(90, 12, 325, 21);
 		pCarreras.add(txtNombreCarr);
-		
+
 		JButton btnAltaCarr = new JButton("Alta");
 		btnAltaCarr.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -89,14 +89,13 @@ public class GUI extends JFrame {
 					DAOCarrera.insert(c);
 					recargarCarreras(cmbCarreras);
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
 		});
 		btnAltaCarr.setBounds(12, 78, 399, 27);
 		pCarreras.add(btnAltaCarr);
-		
+
 		cmbCarreras = new JComboBox<Carrera>();
 		cmbCarreras.addFocusListener(new FocusAdapter() {
 			@Override
@@ -106,7 +105,7 @@ public class GUI extends JFrame {
 		});
 		cmbCarreras.setBounds(12, 117, 399, 26);
 		pCarreras.add(cmbCarreras);
-		
+
 		JButton btnBorrarCarr = new JButton("Borrar");
 		btnBorrarCarr.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -114,14 +113,13 @@ public class GUI extends JFrame {
 					long id = ((Carrera) cmbCarreras.getSelectedItem()).getId();
 					DAOCarrera.delete(id);
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
 		});
 		btnBorrarCarr.setBounds(12, 155, 200, 27);
 		pCarreras.add(btnBorrarCarr);
-		
+
 		JButton btnModifCarr = new JButton("Modificar");
 		btnModifCarr.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -132,20 +130,19 @@ public class GUI extends JFrame {
 					long id = ((Carrera) cmbCarreras.getSelectedItem()).getId();
 					DAOCarrera.update(id, c);
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
 		});
 		btnModifCarr.setBounds(224, 155, 187, 27);
 		pCarreras.add(btnModifCarr);
-		
+
 		JButton btnListarCarr = new JButton("Listar");
 		btnListarCarr.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					List<Carrera> list = DAOCarrera.findAll();
-					
+
 					// Creo un nuevo modelo (haciendolo no editable)
 					DefaultTableModel model = new DefaultTableModel() {
 						private static final long serialVersionUID = 1L;
@@ -155,16 +152,12 @@ public class GUI extends JFrame {
 							return false; // Hago todas las celdas no editables
 						}
 					};
-					
-					String[] titulos = {"Id", "Nombre", "Universidad"};
+
+					String[] titulos = { "Id", "Nombre", "Universidad" };
 					model.setColumnIdentifiers(titulos);
-					
-					for (Carrera c: list) {
-						Object[] carrera = {
-								c.getId(),
-								c.getNombre(),
-								c.getUniversidad().getNombre()
-						};
+
+					for (Carrera c : list) {
+						Object[] carrera = { c.getId(), c.getNombre(), c.getUniversidad().getNombre() };
 						model.addRow(carrera);
 					}
 					// Envuelvo la tabla en un JScrollPane
@@ -179,7 +172,7 @@ public class GUI extends JFrame {
 		});
 		btnListarCarr.setBounds(12, 194, 399, 27);
 		pCarreras.add(btnListarCarr);
-		
+
 		cmbUniCarrAlta = new JComboBox<Universidad>();
 		cmbUniCarrAlta.addFocusListener(new FocusAdapter() {
 			@Override
@@ -240,7 +233,7 @@ public class GUI extends JFrame {
 					u.setUbicacion(txtUbicacionUni.getText());
 					DAOUniversidad.update(id, u);
 					recargarUniversidades(cmbUniversidad);
-				}catch (Exception e1) {
+				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
 			}
@@ -255,7 +248,6 @@ public class GUI extends JFrame {
 					long id = ((Universidad) cmbUniversidad.getSelectedItem()).getId();
 					DAOUniversidad.delete(id);
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -333,11 +325,10 @@ public class GUI extends JFrame {
 				cmb.addItem(universidad);
 			}
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 	}
-	
+
 	private void recargarCarreras(JComboBox<Carrera> cmb) {
 		try {
 			List<Carrera> list = DAOCarrera.findAll();
@@ -346,7 +337,6 @@ public class GUI extends JFrame {
 				cmb.addItem(carrera);
 			}
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 	}

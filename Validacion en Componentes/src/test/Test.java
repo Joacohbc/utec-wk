@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import java.time.LocalDate;
 
+@SuppressWarnings("serial")
 public class Test extends JFrame {
 
 	private JPanel contentPane;

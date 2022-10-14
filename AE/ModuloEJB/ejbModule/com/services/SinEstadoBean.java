@@ -15,7 +15,7 @@ public class SinEstadoBean implements SinEstadoBeanRemote {
      * Default constructor. 
      */
     public SinEstadoBean() {
-        // TODO Auto-generated constructor stub
+        
     }
     
     @Override

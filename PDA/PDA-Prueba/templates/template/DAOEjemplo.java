@@ -24,7 +24,6 @@ public class DAOEjemplo {
 		List<Ejemplo> lista = new LinkedList<>();
 		while (rs.next()) {
 			Ejemplo objs = new Ejemplo();
-			// TODO: Setear campos del Objeto
 			lista.add(objs);
 		}
 
@@ -38,7 +37,6 @@ public class DAOEjemplo {
 
 		if (rs.next()) {
 			Ejemplo obj = new Ejemplo();
-			// TODO: Setear campos
 			return obj;
 		} else {
 			return null;
@@ -47,14 +45,12 @@ public class DAOEjemplo {
 
 	public static boolean insert(Ejemplo c) throws SQLException {
 		PreparedStatement ps = DatabaseManager.getConnection().prepareStatement(INSERT);
-		// TODO: Setear campos a insertar
 		return ps.executeUpdate() > 0;
 	}
 
 	public static boolean update(Long id, Ejemplo c) throws SQLException {
 		PreparedStatement ps = DatabaseManager.getConnection().prepareStatement(UPDATE);
 		ps.setLong(1, id);
-		// TODO: Setear campos a modificar
 		return ps.executeUpdate() > 0;
 	}
 

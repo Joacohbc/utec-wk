@@ -15,7 +15,6 @@ public class BeanLocal {
      * Default constructor. 
      */
     public BeanLocal() {
-        // TODO Auto-generated constructor stub
     }
     
     public int CalcularLargo(String palabra) {
