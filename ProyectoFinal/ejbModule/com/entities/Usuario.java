@@ -2,6 +2,10 @@ package com.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.entities.enums.Departamento;
+import com.entities.enums.EstadoUsuario;
+
 import java.util.Date;
 import java.util.List;
 
@@ -12,7 +16,7 @@ import java.util.List;
  */
 @Entity
 @Table(name="USUARIOS")
-@NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -25,13 +29,15 @@ public class Usuario implements Serializable {
 
 	private String contrasena;
 
-	private String departamento;
+	@Enumerated
+	private Departamento departamento;
 
 	private String documento;
 
 	private String email;
-
-	private String estado;
+	
+	@Enumerated
+	private EstadoUsuario estado;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="FEC_NACIMIENTO")
@@ -41,24 +47,24 @@ public class Usuario implements Serializable {
 
 	private String localidad;
 
-	@Column(name="NOMBRE_USUARIO")
+	@Column(name="NOMBRE_USUARIO", unique = true)
 	private String nombreUsuario;
 
 	private String nombres;
 
 	private String telefono;
 
-	//bi-directional many-to-one association to Analista
-	@OneToMany(mappedBy="usuario")
-	private List<Analista> analistas;
-
-	//bi-directional many-to-one association to Estudiante
-	@OneToMany(mappedBy="usuario")
-	private List<Estudiante> estudiantes;
-
-	//bi-directional many-to-one association to Tutore
-	@OneToMany(mappedBy="usuario")
-	private List<Tutor> tutores;
+//	//bi-directional many-to-one association to Analista
+//	@OneToMany(mappedBy="usuario")
+//	private List<Analista> analistas;
+//
+//	//bi-directional many-to-one association to Estudiante
+//	@OneToMany(mappedBy="usuario")
+//	private List<Estudiante> estudiantes;
+//
+//	//bi-directional many-to-one association to Tutore
+//	@OneToMany(mappedBy="usuario")
+//	private List<Tutor> tutores;
 
 	//bi-directional many-to-one association to Itr
 	@ManyToOne
@@ -92,11 +98,11 @@ public class Usuario implements Serializable {
 		this.contrasena = contrasena;
 	}
 
-	public String getDepartamento() {
+	public Departamento getDepartamento() {
 		return this.departamento;
 	}
 
-	public void setDepartamento(String departamento) {
+	public void setDepartamento(Departamento departamento) {
 		this.departamento = departamento;
 	}
 
@@ -116,11 +122,11 @@ public class Usuario implements Serializable {
 		this.email = email;
 	}
 
-	public String getEstado() {
+	public EstadoUsuario getEstadoUsuario() {
 		return this.estado;
 	}
 
-	public void setEstado(String estado) {
+	public void setEstadoUsuario(EstadoUsuario estado) {
 		this.estado = estado;
 	}
 

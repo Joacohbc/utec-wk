@@ -2,6 +2,9 @@ package com.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.entities.enums.Departamento;
+
 import java.util.List;
 
 
@@ -11,7 +14,6 @@ import java.util.List;
  */
 @Entity
 @Table(name="ITRS")
-@NamedQuery(name="Itr.findAll", query="SELECT i FROM Itr i")
 public class Itr implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -20,7 +22,7 @@ public class Itr implements Serializable {
 	@Column(name="ID_ITR")
 	private Long idItr;
 
-	private String departamento;
+	private Departamento departamento;
 
 	private Boolean estado;
 
@@ -41,11 +43,11 @@ public class Itr implements Serializable {
 		this.idItr = idItr;
 	}
 
-	public String getDepartamento() {
+	public Departamento getDepartamento() {
 		return this.departamento;
 	}
 
-	public void setDepartamento(String departamento) {
+	public void setDepartamento(Departamento departamento) {
 		this.departamento = departamento;
 	}
 

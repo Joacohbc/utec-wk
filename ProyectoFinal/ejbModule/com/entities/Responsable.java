@@ -27,7 +27,7 @@ public class Responsable implements Serializable {
 	//bi-directional many-to-one association to Tutore
 	@ManyToOne
 	@JoinColumn(name="ID_TUTOR")
-	private Tutor tutore;
+	private Tutor tutor;
 
 	public Responsable() {
 	}
@@ -49,11 +49,11 @@ public class Responsable implements Serializable {
 	}
 
 	public Tutor getTutore() {
-		return this.tutore;
+		return this.tutor;
 	}
 
 	public void setTutore(Tutor tutore) {
-		this.tutore = tutore;
+		this.tutor = tutore;
 	}
 
 }

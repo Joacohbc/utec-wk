@@ -11,8 +11,8 @@ import java.util.List;
  */
 @Entity
 @Table(name="TUTORES")
-@NamedQuery(name="Tutor.findAll", query="SELECT t FROM Tutor t")
-public class Tutor implements Serializable {
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Tutor extends Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -27,7 +27,7 @@ public class Tutor implements Serializable {
 	private String tipo;
 
 	//bi-directional many-to-one association to Responsable
-	@OneToMany(mappedBy="tutore")
+	@OneToMany(mappedBy="tutor")
 	private List<Responsable> responsables;
 
 	//bi-directional many-to-one association to Usuario

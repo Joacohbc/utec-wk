@@ -11,8 +11,8 @@ import java.util.List;
  */
 @Entity
 @Table(name="ANALISTAS")
-@NamedQuery(name="Analista.findAll", query="SELECT a FROM Analista a")
-public class Analista implements Serializable {
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Analista extends Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -20,7 +20,7 @@ public class Analista implements Serializable {
 	@Column(name="ID_ANALISTA")
 	private Long idAnalista;
 
-	private byte estado;
+	private Boolean estado;
 
 	//bi-directional many-to-one association to AccionConstancia
 	@OneToMany(mappedBy="analista")
@@ -54,11 +54,11 @@ public class Analista implements Serializable {
 		this.idAnalista = idAnalista;
 	}
 
-	public byte getEstado() {
+	public Boolean getEstado() {
 		return this.estado;
 	}
 
-	public void setEstado(byte estado) {
+	public void setEstado(Boolean estado) {
 		this.estado = estado;
 	}
 

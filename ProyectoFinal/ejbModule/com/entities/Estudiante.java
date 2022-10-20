@@ -11,8 +11,8 @@ import java.util.List;
  */
 @Entity
 @Table(name="ESTUDIANTES")
-@NamedQuery(name="Estudiante.findAll", query="SELECT e FROM Estudiante e")
-public class Estudiante implements Serializable {
+@PrimaryKeyJoinColumn(referencedColumnName = "idUsuario")
+public class Estudiante extends Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
