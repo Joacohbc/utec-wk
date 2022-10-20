@@ -3,7 +3,7 @@ package test;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class Main {
+public class MD5 {
 	
 	public static String toMD5(String password) throws NoSuchAlgorithmException {
 		MessageDigest md = MessageDigest.getInstance("MD5");
