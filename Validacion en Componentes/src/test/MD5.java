@@ -21,4 +21,13 @@ public class MD5 {
 		// Y retorno el HASH en String 
 		return passString.toString();
 	}
+	
+	public static void main(String[] args) {
+		try {
+			System.out.println(toMD5("1234"));
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
