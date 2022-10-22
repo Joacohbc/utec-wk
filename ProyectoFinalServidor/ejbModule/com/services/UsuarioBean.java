@@ -69,7 +69,7 @@ public class UsuarioBean implements UsuarioBeanRemote {
 	}
 
 	@Override
-	public <T extends Usuario> T login(String nombreUsuario, String password, Class<T> tipoUsu) {
+	public <T extends Usuario> T login(String nombreUsuario, String password, Class<T> tipoUsu) throws ServiceException, InvalidUserException{
 		try {
 			Long id = em
 					.createQuery("SELECT u.idUsuario FROM Usuario u WHERE u.nombreUsuario = ?1 AND u.contrasena = ?2",

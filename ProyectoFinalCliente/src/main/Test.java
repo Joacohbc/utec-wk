@@ -62,7 +62,7 @@ public class Test extends JFrame {
 		t.setLocalidad("Otro lugar que no se cual es");
 
 		System.out.println(Bean.user().register(t));
-		System.out.println(Bean.user().login("jwilliam.machado", "1234", Tutor.class));
+		System.out.println(Bean.user().login("william.machado", "1234", Tutor.class));
 
 //		EventQueue.invokeLater(new Runnable() {
 //			public void run() {

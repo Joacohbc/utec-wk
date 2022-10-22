@@ -22,10 +22,14 @@ public class Itr implements Serializable {
 	@Column(name="ID_ITR")
 	private Long idItr;
 
+	@Enumerated(EnumType.ORDINAL)
+	@Column(nullable = false)
 	private Departamento departamento;
-
+	
+	@Column(nullable = false)
 	private Boolean estado;
 
+	@Column(nullable = false, unique = true)
 	private String nombre;
 
 	//bi-directional many-to-one association to Usuario

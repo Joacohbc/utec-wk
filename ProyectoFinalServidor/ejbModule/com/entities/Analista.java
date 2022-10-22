@@ -29,25 +29,12 @@ public class Analista extends Usuario implements Serializable {
 	@OneToMany(mappedBy="analista")
 	private List<AccionReclamo> accionReclamos;
 
-//	//bi-directional many-to-one association to Usuario
-//	@ManyToOne
-//	@JoinColumn(name="ID_USUARIO")
-//	private Usuario usuario;
-
 	//bi-directional many-to-one association to Gestore
 	@OneToMany(mappedBy="analista")
 	private List<Gestor> gestores;
 
 	public Analista() {
 	}
-
-//	public Long getIdAnalista() {
-//		return this.idAnalista;
-//	}
-//
-//	public void setIdAnalista(Long idAnalista) {
-//		this.idAnalista = idAnalista;
-//	}
 
 	public Boolean getEstado() {
 		return this.estado;
@@ -122,14 +109,6 @@ public class Analista extends Usuario implements Serializable {
 
 		return accionReclamo;
 	}
-
-//	public Usuario getUsuario() {
-//		return this.usuario;
-//	}
-//
-//	public void setUsuario(Usuario usuario) {
-//		this.usuario = usuario;
-//	}
 
 	public List<Gestor> getGestores() {
 		return this.gestores;
