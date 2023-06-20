@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<body>
+
+	<h:form>
+		<h:panelGrid columns="3">
+			<h:outputLabel value="Nombre y Apellido:" />
+			<h:inputText value="#{llamadaMB.incidente.nombreCompleto}"
+				id="nombreCompleto">
+				<f:validateBean />
+			</h:inputText>
+			<h:message style="color: red;" for="nombreCompleto" />	
+
+			<h:outputLabel value="Descripcion:" />
+			<h:inputText value="#{llamadaMB.incidente.descripcion}" id="descripcion">
+				<f:validateBean />
+			</h:inputText>
+			<h:message style="color: red;" for="descripcion" />
+
+			<h:outputLabel value="Tipo:"/>			
+			<h:selectOneMenu value="#{llamadaMB.incidente.tipo}" id="tipo">
+				<f:selectItem itemValue="Reclamo" itemLabel="Reclamo" />
+				<f:selectItem itemValue="Nuevo pedido" itemLabel="Nuevo pedido" />
+			</h:selectOneMenu>
+			<h:message style="color: red;" for="tipo" />
+			
+			<h:outputLabel value="Duracion:"/>
+			<h:inputText value="#{llamadaMB.incidente.duracion}" id="duracion" >
+				<f:validateBean />
+			</h:inputText>
+			<h:message style="color: red;" for="duracion" />
+
+			<h:outputLabel value="Estado:"/>			
+			<h:selectOneMenu value="#{llamadaMB.incidente.estado}" id="estado">
+				<f:selectItem itemValue="Resuelto" itemLabel="Resuelto" />
+				<f:selectItem itemValue="Pendiente" itemLabel="Pendiente" />
+				<f:selectItem itemValue="Derivado" itemLabel="Derivado"/>
+			</h:selectOneMenu>
+			<h:message style="color: red;" for="estado" />
+			
+			<h:commandButton action="#{llamadaMB.crear}" value="Crear" />
+			<h:link outcome="consulta" value="Ver todo los Incidentes" />
+		</h:panelGrid>
+	</h:form>
+</body>
+</html>

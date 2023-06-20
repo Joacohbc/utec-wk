@@ -14,7 +14,6 @@ import com.app.services.UserDAO;
 @RequestScoped
 @Path("/users")
 @Produces({ "application/json" })
-@Consumes({ "application/json" })
 public class UserController {
 	
 	@EJB

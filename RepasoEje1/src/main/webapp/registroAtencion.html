@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ingresar Incidente</title>
+</head>
+
+
+<body>
+	<form action="registrar" method="post">
+		<table>
+		<tr>
+			<td>
+				Nombre y apellido:
+			</td>
+			<td>
+				<input name="nombres" type="text" required>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Descripcion de la Solicitud:
+			</td>
+			<td>
+				<input name="descripcion" type="text" required>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Tipo de Solicitud
+			</td>
+			<td>
+				<select name="tipo">
+					<option value="Nuevo Pedido" selected>Nuevo Pedido</option>
+					<option value="Reclamo">Reclamo</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Duracion:
+			</td>
+			<td>
+				<input name="duracion" type="text" required/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Estado del Llamado:
+			</td>
+			<td>
+				<select name="estado">
+					<option value="resuleto" selected>Resuelto</option>
+					<option value="pendiente">Pendiente</option>
+					<option value="derivado">Derivado</option>
+				</select>
+			</td>
+		</tr>
+	</table>
+	<input type="submit" value="Ingresar"/>
+	<a href="consultar">Listado de todos los incidentes</a>
+	</form>
+</body>
+</html>
